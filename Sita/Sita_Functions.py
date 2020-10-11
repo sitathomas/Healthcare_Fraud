@@ -112,3 +112,13 @@ def cols_by_dtype(df):
     categorical_cols = df.select_dtypes(['object', 'category']).columns.to_list()
     date_cols = df.select_dtypes('datetime64[ns]').columns.to_list()
     return numeric_cols, categorical_cols, date_cols
+
+def split_date(df, cols):
+    '''
+    Splits any datetime cols specified for a df into three additional columns containing
+    the date's week, month, and year, respectively.
+    '''
+    for col in cols:
+        df[f'{str(col)}Week'] = df[col].dt.week
+        df[f'{str(col)}Month'] = df[col].dt.month
+        df[f'{str(col)}Year'] = df[col].dt.year
