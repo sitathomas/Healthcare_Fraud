@@ -4,13 +4,10 @@ import numpy as np
 from joblib import dump
 
 
-beneficiary = pd.read_csv(
-    '../data/Train_Beneficiarydata-1542865627584.csv')
-inpatient =  pd.read_csv(
-    '../data/Train_Inpatientdata-1542865627584.csv')
-outpatient =  pd.read_csv(
-    '../data/Train_Outpatientdata-1542865627584.csv')
-target = pd.read_csv('../data/Train-1542865627584.csv')
+beneficiary = pd.read_csv('./data/Train_Beneficiarydata-1542865627584.csv')
+inpatient =  pd.read_csv('./data/Train_Inpatientdata-1542865627584.csv')
+outpatient =  pd.read_csv('./data/Train_Outpatientdata-1542865627584.csv')
+target = pd.read_csv('./data/Train-1542865627584.csv')
 
 
 fxns.date_parser(beneficiary, ['DOB', 'DOD'])
@@ -24,16 +21,7 @@ fxns.re_encode(beneficiary, inpatient, outpatient)
 beneficiary.loc[beneficiary.RenalDiseaseIndicator == '0', 'RenalDiseaseIndicator'] = 0
 beneficiary.loc[beneficiary.RenalDiseaseIndicator == 'Y', 'RenalDiseaseIndicator'] = 1
 
-
-
-
-
-# # ONLY DUMMIFY AND CONSOLIDATE IF THERE IS NO RELATIONSHIP BETWEEN THE SINGLE COLS
-# # AND THE TARGET VARIABLE
-# dummify(inpatient, outpatient)
-# consolidate(inpatient, outpatient)
-
-# IF DUMMIFY AND CONSOLIDATE IS NOT USED, CONVERT PROCEDURE CODE COLS TO STR
+# convert procedure code cols to str
 for df in [inpatient, outpatient]:
     procedure_cols = df.columns[df.columns
                                     .str.contains('Procedure')].to_list()
@@ -43,22 +31,17 @@ for df in [inpatient, outpatient]:
     for col in procedure_cols:
         df.loc[df[col] == 'nan', [col]] = np.nan
 
-
-
-
-
 # # encode patient type in prep for merge
 inpatient['IsOutpatient'] = '0'
 outpatient['IsOutpatient'] = '1'
-
 
 # # merge dfs
 claims = pd.concat([inpatient, outpatient])
 claims = pd.merge(claims, beneficiary, on='BeneID')
 claims = pd.merge(claims, target, on='Provider')
 
-
-# fxns.to_category_dtype(claims)
+# change various cols to dtype category
+fxns.to_category_dtype(claims)
 
 
 dump(claims, 'claims.pkl')
