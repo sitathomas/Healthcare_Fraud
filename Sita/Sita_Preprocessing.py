@@ -32,16 +32,22 @@ for df in [inpatient, outpatient]:
         df.loc[df[col] == 'nan', [col]] = np.nan
 
 # # encode patient type in prep for merge
-inpatient['IsOutpatient'] = '0'
-outpatient['IsOutpatient'] = '1'
+inpatient['IsOutpatient'] = 0
+outpatient['IsOutpatient'] = 1
 
 # # merge dfs
 claims = pd.concat([inpatient, outpatient])
 claims = pd.merge(claims, beneficiary, on='BeneID')
 claims = pd.merge(claims, target, on='Provider')
 
+# add date cols containing only day, week, year
+fxns.split_date(claims, ['ClaimStartDt', 'ClaimEndDt', 'AdmissionDt', 'DischargeDt'])
+
 # change various cols to dtype category
 fxns.to_category_dtype(claims)
+
+# drop ChronicCond_ prefix from applicable cols
+fxns.drop_chronic_prefix(claims)
 
 
 dump(claims, 'claims.pkl')
