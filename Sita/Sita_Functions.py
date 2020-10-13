@@ -126,7 +126,8 @@ def split_date(df, cols):
 
 def drop_chronic_prefix(*dfs):
     '''
-    Removes the ChronicCondition_ prefix from any columns in any dfs passed.
+    Replaces the ChronicCondition_ prefix from any columns in any dfs passed with a _Chronic
+    suffix (useful for readability on graphs).
     '''
     for df in dfs:
         df.rename(columns={'ChronicCond_Alzheimer': 'ChronicCond_Alzheimers',
