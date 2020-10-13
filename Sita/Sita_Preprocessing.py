@@ -3,13 +3,13 @@ import Sita_Functions as fxns
 import numpy as np
 from joblib import dump
 
-
+# load original CSV files
 beneficiary = pd.read_csv('./data/Train_Beneficiarydata-1542865627584.csv')
 inpatient =  pd.read_csv('./data/Train_Inpatientdata-1542865627584.csv')
 outpatient =  pd.read_csv('./data/Train_Outpatientdata-1542865627584.csv')
 target = pd.read_csv('./data/Train-1542865627584.csv')
 
-
+# parse dates
 fxns.date_parser(beneficiary, ['DOB', 'DOD'])
 fxns.date_parser(inpatient, ['ClaimStartDt', 'ClaimEndDt', 'AdmissionDt', 'DischargeDt'])
 fxns.date_parser(outpatient, ['ClaimStartDt', 'ClaimEndDt'])
@@ -35,21 +35,16 @@ for df in [inpatient, outpatient]:
 inpatient['IsOutpatient'] = 0
 outpatient['IsOutpatient'] = 1
 
-# # merge dfs
+# numerically encode PotentialFraud
+target.loc[target.PotentialFraud == 'No', 'PotentialFraud'] = 0
+target.loc[target.PotentialFraud == 'Yes', 'PotentialFraud'] = 1
+
+# merge dfs
 claims = pd.concat([inpatient, outpatient])
 claims = pd.merge(claims, beneficiary, on='BeneID')
 claims = pd.merge(claims, target, on='Provider')
 
-# add date cols containing only day, week, year
-fxns.split_date(claims, ['ClaimStartDt', 'ClaimEndDt', 'AdmissionDt', 'DischargeDt'])
-
-# change various cols to dtype category
-fxns.to_category_dtype(claims)
-
-# drop ChronicCond_ prefix from applicable cols
-fxns.drop_chronic_prefix(claims)
-
-
+# pickle pre-processed file
 dump(claims, 'claims.pkl')
 
 
