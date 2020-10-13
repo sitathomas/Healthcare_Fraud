@@ -54,14 +54,15 @@ def to_category_dtype(*dfs):
     Changes the dtype of a column for all dfs passed to 'category'.
     '''
     for df in dfs:
-        cols = df.columns[df.columns.str.contains('Gender')
+        cols = (df.columns[df.columns.str.contains('Gender')
                     | df.columns.str.contains('Race')
-                    | df.columns.str.contains('RenalDiseaseIndicator')
                     | df.columns.str.contains('State')
                     | df.columns.str.contains('County')
                     | df.columns.str.contains('Chronic')
-                    | df.columns.str.contains('Diagnosis')
-                    | df.columns.str.contains('Procedure')].to_list()
+                    | df.columns.str.contains('IsOutpatient')
+                    | df.columns.str.contains('Dt_Week')
+                    | df.columns.str.contains('Dt_Week')].to_list()
+            + df.select_dtypes('object').columns.tolist())
         df[cols] = \
             df[cols].apply(lambda x: x.astype('category'))
 
@@ -119,6 +120,34 @@ def split_date(df, cols):
     the date's week, month, and year, respectively.
     '''
     for col in cols:
-        df[f'{str(col)}Week'] = df[col].dt.week
-        df[f'{str(col)}Month'] = df[col].dt.month
-        df[f'{str(col)}Year'] = df[col].dt.year
+        df[f'{str(col)}_Week'] = df[col].dt.week
+#         df[f'{str(col)}_Month'] = df[col].dt.month
+#         df[f'{str(col)}_Year'] = df[col].dt.year
+
+def drop_chronic_prefix(*dfs):
+    '''
+    Removes the ChronicCondition_ prefix from any columns in any dfs passed.
+    '''
+    for df in dfs:
+        df.rename(columns={'ChronicCond_Alzheimer': 'ChronicCond_Alzheimers',
+                           'ChronicCond_Heartfailure': 'ChronicCond_HeartFailure',
+                           'ChronicCond_Osteoporasis': 'ChronicCond_Osteoporosis',
+                  'ChronicCond_rheumatoidarthritis': 'ChronicCond_RheumatoidArthritis',
+                           'ChronicCond_stroke': 'ChronicCond_Stroke',
+                           'RenalDiseaseIndicator': 'RenalDisease'},
+                  inplace=True)
+        
+        chronic_cols = df.columns[df.columns.str.contains('Chronic')].to_list()
+        
+        df.columns = \
+            [f'{col}_Chronic' if col in chronic_cols else col for col in df.columns]
+        
+        df.columns = df.columns.str.replace('ChronicCond_', '')
+
+
+
+
+
+
+
+
