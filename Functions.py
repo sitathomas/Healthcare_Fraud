@@ -4,7 +4,14 @@ import numpy as np
 
 def check_obj_dtypes(*dfs):
     '''
-    Prints the type and count of dtypes in any object columns of all dfs passed.
+    Prints the type and count of dtypes in any columns of 'object' dtype. Highlighted columns
+    have multiple dtypes (i.e. 'str' and 'float' for missing values).
+    
+    Arguments: One or more dataframes.
+    
+    Output: A printout.
+    
+    Returns: None.
     '''
     for df in dfs:
         object_cols = df.select_dtypes('object').columns.to_list()
@@ -19,8 +26,14 @@ def check_obj_dtypes(*dfs):
 
 def cols_by_dtype(df):
     '''
-    Saves numeric and categorical columns of a df to three new variables, numeric_cols, 
+    Saves numeric and categorical columns of a df to three new variables: numeric_cols, 
     categorical_cols, and date_cols.
+    
+    Arguments: A single dataframe.
+    
+    Output: None.
+    
+    Returns: A tuple containing three lists of column names.
     '''
     numeric_cols = df.select_dtypes(np.number).columns.to_list()
     categorical_cols = df.select_dtypes(['object', 'category']).columns.to_list()
@@ -31,6 +44,12 @@ def cols_by_dtype(df):
 def date_parser(df, cols):
     '''
     Converts passed columns in a df to datetime.
+    
+    Arguments: A single dataframe.
+    
+    Output: None.
+    
+    Returns: A dataframe column altered in place.
     '''
     for col in cols:
         df[col] = pd.to_datetime(df[col])
@@ -39,6 +58,12 @@ def date_parser(df, cols):
 def explore_df(df):
     '''
     Prints a description of a df including shape, columns and dtypes, and % missingness.
+    
+    Arguments: A single dataframe.
+    
+    Output: A printout.
+    
+    Returns: None.
     '''
     print('Shape:', df.shape, '\n')
     print('Columns and dtypes:\n', df.dtypes, '\n')
@@ -53,6 +78,12 @@ def drop_chronic_prefix(*dfs):
     '''
     Replaces the ChronicCondition_ prefix from any columns in any dfs passed with a _Chronic
     suffix (useful for readability on graphs).
+    
+    Arguments: One or more dataframes.
+    
+    Output: None.
+    
+    Returns: Dataframe columns altered in place.
     '''
     for df in dfs:
         df.rename(columns={'ChronicCond_Alzheimer': 'ChronicCond_Alzheimers',
@@ -74,6 +105,12 @@ def drop_chronic_prefix(*dfs):
 def re_encode(*dfs):
     '''
     Re-encodes Gender, Race, ChronicCond columns from 1/2 to 0/1 for any dfs passed.
+    
+    Arguments: One or more dataframes.
+    
+    Output: None.
+    
+    Returns: Dataframe columns altered in place.
     '''
     for df in dfs:
         cols = df.columns[df.columns.str.contains('Gender')
@@ -88,6 +125,14 @@ def re_encode(*dfs):
 def re_encode_bool(df, cols):
     '''
     Re-encodes passed columns from Boolean type to 0/1 for any dfs passed.
+    
+    Arguments:
+        - A single dataframe
+        - a list of one or more columns.
+    
+    Output: None.
+    
+    Returns: Dataframe columns altered in place.
     '''
     for col in cols:
         df.loc[df[col] == False, col] = 0
@@ -98,6 +143,14 @@ def split_date(df, cols):
     '''
     Splits any datetime cols specified for a df into three additional columns containing
     the date's week, month, and year, respectively.
+    
+    Arguments:
+        - A single dataframe
+        - A list of one or more columns.
+    
+    Output: None.
+    
+    Returns: Dataframe columns altered in place.
     '''
     for col in cols:
         df[f'{str(col)}_Week'] = df[col].dt.week
@@ -108,6 +161,12 @@ def split_date(df, cols):
 def to_category_dtype(*dfs):
     '''
     Changes the dtype of a column for all dfs passed to 'category'.
+    
+    Arguments: One or more dataframes.
+    
+    Output: None.
+    
+    Returns: Dataframe columns altered in place.
     '''
     for df in dfs:
         cols = (df.columns[df.columns.str.contains('Gender')
