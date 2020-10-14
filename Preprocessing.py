@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, '.')
 
 import pandas as pd
-import Sita_Functions as fxns
+import Functions as fxns
 import numpy as np
 from joblib import dump
 
@@ -13,7 +13,7 @@ outpatient =  pd.read_csv('./data/Train_Outpatientdata-1542865627584.csv')
 target = pd.read_csv('./data/Train-1542865627584.csv')
 
 # change numeric encoding from 1/2 to 0/1
-fxns.re_encode(beneficiary, inpatient, outpatient)
+fxns.re_encode(beneficiary)
 
 # numerically encode RenalDiseaseIndicator
 beneficiary.loc[beneficiary.RenalDiseaseIndicator == '0', 'RenalDiseaseIndicator'] = 0
