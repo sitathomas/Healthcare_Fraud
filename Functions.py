@@ -127,8 +127,8 @@ def re_encode_bool(df, cols):
     Re-encodes passed columns from Boolean type to 0/1 for any dfs passed.
     
     Arguments:
-        - A single dataframe
-        - a list of one or more columns.
+        df: A single dataframe.
+        cols: a list of one or more columns.
     
     Output: None.
     
@@ -145,8 +145,8 @@ def split_date(df, cols):
     the date's week, month, and year, respectively.
     
     Arguments:
-        - A single dataframe
-        - A list of one or more columns.
+        df: A single dataframe.
+        cols: A list of one or more columns.
     
     Output: None.
     
@@ -180,6 +180,74 @@ def to_category_dtype(*dfs):
             + df.select_dtypes('object').columns.to_list())
         df[cols] = \
             df[cols].apply(lambda x: x.astype('category'))
+
+
+def add_count_per_col(df, groupby_col, count_col, newcol):
+    '''
+    Adds a new column to a df that lists a column count per grouped-by
+    column.
+    
+    Arguments:
+        df: A single dataframe.
+        groupby_col: A single column to group by.
+        count_col: A single column to aggregate the grouped counts for.
+        newcol: The desired name of the new column.
+    
+    Output: None.
+    
+    Returns: A dataframe.
+    '''
+    df_per_col = df.groupby(groupby_col).count()[[count_col]]
+    df_per_col.columns = [newcol]
+    expanded_df = pd.merge(df, df_per_col, how='left',
+                           left_on=groupby_col, right_on=df_per_col.index)
+    return expanded_df
+
+
+def add_mean_per_col(df, groupby_col, mean_col, newcol):
+    '''
+    Adds a new column to a df that lists a column mean per grouped-by
+    column.
+    
+    Arguments:
+        df: A single dataframe.
+        groupby_col: A single column to group by.
+        mean_col: A single column to aggregate the grouped means for.
+        newcol: The desired name of the new column.
+    
+    Output: None.
+    
+    Returns: A dataframe.
+    '''
+    df_per_col = df.groupby(groupby_col).mean()[[mean_col]]
+    df_per_col.columns = [newcol]
+    expanded_df = pd.merge(df, df_per_col, how='left',
+                           left_on=groupby_col, right_on=df_per_col.index)
+    return expanded_df
+
+
+def add_sum_per_col(df, groupby_col, sum_col, newcol):
+    '''
+    Adds a new column to a df that lists a column sum per grouped-by
+    column.
+    
+    Arguments:
+        df: A single dataframe.
+        groupby_col: A single column to group by.
+        sum_col: A single column to aggregate the grouped sums for.
+        newcol: The desired name of the new column.
+    
+    Output: None.
+    
+    Returns: A dataframe.
+    '''
+    df_per_col = df.groupby(groupby_col).sum()[[sum_col]]
+    df_per_col.columns = [newcol]
+    expanded_df = pd.merge(df, df_per_col, how='left',
+                           left_on=groupby_col, right_on=df_per_col.index)
+    return expanded_df
+
+
 
 
 
