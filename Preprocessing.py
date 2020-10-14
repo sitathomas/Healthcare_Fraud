@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, '.')
 
 import pandas as pd
-import Sita_Functions as fxns
+import Functions as fxns
 import numpy as np
 from joblib import dump
 
