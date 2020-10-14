@@ -49,7 +49,7 @@ def date_parser(df, cols):
     
     Output: None.
     
-    Returns: A dataframe column altered in place.
+    Returns: Dataframe columns altered in place.
     '''
     for col in cols:
         df[col] = pd.to_datetime(df[col])
@@ -180,8 +180,6 @@ def to_category_dtype(*dfs):
             + df.select_dtypes('object').columns.to_list())
         df[cols] = \
             df[cols].apply(lambda x: x.astype('category'))
-
-
 
 
 
