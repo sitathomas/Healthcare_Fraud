@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '.')
+
 import pandas as pd
 import Sita_Functions as fxns
 import numpy as np
@@ -9,13 +12,8 @@ inpatient =  pd.read_csv('./data/Train_Inpatientdata-1542865627584.csv')
 outpatient =  pd.read_csv('./data/Train_Outpatientdata-1542865627584.csv')
 target = pd.read_csv('./data/Train-1542865627584.csv')
 
-# parse dates
-fxns.date_parser(beneficiary, ['DOB', 'DOD'])
-fxns.date_parser(inpatient, ['ClaimStartDt', 'ClaimEndDt', 'AdmissionDt', 'DischargeDt'])
-fxns.date_parser(outpatient, ['ClaimStartDt', 'ClaimEndDt'])
-
 # change numeric encoding from 1/2 to 0/1
-fxns.re_encode(beneficiary, inpatient, outpatient)
+fxns.re_encode(beneficiary)
 
 # numerically encode RenalDiseaseIndicator
 beneficiary.loc[beneficiary.RenalDiseaseIndicator == '0', 'RenalDiseaseIndicator'] = 0
@@ -44,8 +42,12 @@ claims = pd.concat([inpatient, outpatient])
 claims = pd.merge(claims, beneficiary, on='BeneID')
 claims = pd.merge(claims, target, on='Provider')
 
+# parse dates
+fxns.date_parser(claims,
+                 ['ClaimStartDt', 'ClaimEndDt', 'AdmissionDt', 'DischargeDt', 'DOB', 'DOD'])
+
 # pickle pre-processed file
-dump(claims, 'claims.pkl')
+dump(claims, '../claims.pkl')
 
 
 
