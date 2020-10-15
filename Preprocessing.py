@@ -46,6 +46,19 @@ claims = pd.merge(claims, target, on='Provider')
 fxns.date_parser(claims,
                  ['ClaimStartDt', 'ClaimEndDt', 'AdmissionDt', 'DischargeDt', 'DOB', 'DOD'])
 
+# replace ChronicCond_ prefix from applicable cols with _Chronic suffix
+fxns.drop_chronic_prefix(claims)
+
+# add date cols containing only day, week, year for each column
+fxns.split_date(claims, ['ClaimStartDt', 'ClaimEndDt',
+                         'AdmissionDt', 'DischargeDt'])
+
+# change applicable cols to dtype category
+fxns.to_category_dtype(claims)
+
+claims.RenalDisease = claims.RenalDisease.astype(int)
+claims.PotentialFraud = claims.PotentialFraud.astype(int)
+
 # pickle pre-processed file
 dump(claims, '../claims.pkl')
 
