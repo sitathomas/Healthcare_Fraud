@@ -201,6 +201,7 @@ def re_encode_bool(df, cols):
     for col in cols:
         df.loc[df[col] == False, col] = 0
         df.loc[df[col] == True, col]  = 1
+        df[col] == df[col].astype(str).astype(int)
 
 
 def split_date(df, cols):

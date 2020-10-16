@@ -186,6 +186,24 @@ def re_encode(*dfs):
             df.loc[df[col] == 1, col] = 1
 
 
+def re_encode_bool(df, cols):
+    '''
+    Re-encodes passed columns from Boolean type to 0/1 for any dfs passed.
+    
+    Arguments:
+        df: A single dataframe.
+        cols: a list of one or more columns.
+    
+    Output: None.
+    
+    Returns: Dataframe columns altered in place.
+    '''
+    for col in cols:
+        df.loc[df[col] == False, col] = 0
+        df.loc[df[col] == True, col]  = 1
+        df[col] = df[col].astype(str).astype(int)
+
+
 def split_date(df, cols):
     '''
     Splits any datetime cols specified for a df into three additional columns containing
