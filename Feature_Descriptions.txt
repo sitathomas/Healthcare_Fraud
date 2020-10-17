@@ -1,0 +1,175 @@
+* Provider: Provider ID
+
+* PotentialFraud: Potential fraud boolean
+
+* Perc_Outpatient: Percentage of outpatients
+
+* HasTop5AdmtCode: Percentage of inpatient claims with top 5 admtcode (from PotentialFraud)
+
+* PatientsPerAttPhys: Patient/Attending Physician Ratio
+
+* PatientsPerOperPhys: Patient/Operating Physician Ratio
+
+* PatientsPerOthPhys: Patient/Other Physician Ratio
+
+* Perc_MultHospAttPhys: Percentage of attending physicians serving more than one hospital
+
+* Perc_MultHospOperPhys: Percentage of operating physicians serving more than one hospitals
+
+* Perc_MultHospOtherPhys: Percentage of other physicians serving more than one hospitals
+
+* Perc_ClaimsPerTopFraudState: Percentage of claims from top 5 states that have the most potentially fraudulent claims
+
+* DualPatientProvider: Whether the provider serves both in/out patients
+
+* Perc_DualPatientType: Percentage of patients that receive both in/out patient service
+
+* Ratio_ClaimsPerAttPhys: Average number of claims per Attending Physician
+
+* Ratio_ClaimsPerPatient: Average number of claims per patient
+
+* IP_AnnualDeductibleAmt: Amount of inpatient annual deductible
+
+* IP_AnnualReimbursementAmt: Amount of inpatient annual reimbursement
+
+* IP_Count_UniquePatients: Number of unique inpatient beneficiaries
+
+* IP_Count_UniqueState: Number of unique states among inpatients
+
+* IP_Mean_AdmitDuration: Average admission duration for inpatients
+
+* IP_Mean_ClaimCost: Average inpatient claim cost
+
+* IP_Mean_ClaimDuration: Average claim duration for inpatients
+
+* IP_Mean_DailyClaimCost: Average daily claim cost for inpatients
+
+* IP_Mean_DeductibleAmtPaid: Average deductible paid for inpatients
+
+* IP_Mean_InscClaimAmtReimbursed: Average amount of reimbursed claims for inpatients
+
+* IP_Mean_NoOfMonths_PartACov: Average number of months covered by Part A Medicare for inpatients
+
+* IP_Mean_NoOfMonths_PartBCov: Average number of months covered by Part B Medicare for inpatients
+
+* IP_Perc_Duplicates: Percentage of inpatient duplicate claims with the same diagnosis and procedure codes
+
+* IP_Perc_GenderZero: Percentage of gender zero inpatients
+
+* IP_Perc_HasAllPhys: Percentage of inpatient claims that had all 3 physicians involved
+
+* IP_Perc_HasNoPhys: Percentage of inpatient claims that had no physicians involved
+
+* IP_Perc_HasDied: Percentage of claims where the inpatient has a date of death
+
+* IP_Mean_InsReimbursementRatio: Average percentage Insurance covered for inpatients
+
+* IP_Mean_AgeAtClaim: Average age of inpatients
+
+* IP_Mean_NumChronicConds: Average nunber of chronic conditions among inpatients
+
+* IP_Perc_MultHosp: Percentage of inpatients who visited multiple providers
+
+* IP_Perc_No_ProcCode: Percentage of inpatient with no procedure codes
+
+* IP_Perc_RaceOne: Percentage of Race One inpatients
+
+* IP_Perc_RaceTwo: Percentage of Race Two inpatients
+
+* IP_Perc_RaceThree: Percentage of Race Three inpatients
+
+* IP_Perc_Alzheimers_Chronic: Percentage of inpatients with Alzheimers
+
+* IP_Perc_Cancer_Chronic: Percentage of inpatients with Cancer
+
+* IP_Perc_Depression_Chronic: Percentage of inpatients with Depression
+
+* IP_Perc_Diabetes_Chronic: Percentage of inpatients with Diabetes
+
+* IP_Perc_HasRenalDisease: Percentage of inpatients with Renal Disease
+
+* IP_Perc_HeartFailure_Chronic: Percentage of inpatients with Heart Failure
+
+* IP_Perc_IschemicHeart_Chronic: Percentage of inpatients with Ischemic Heart
+
+* IP_Perc_KidneyDisease_Chronic: Percentage of inpatients with Kidney Disease
+
+* IP_Perc_ObstrPulmonary_Chronic: Percentage of inpatients with ObstrPulmonary
+
+* IP_Perc_Osteoporosis_Chronic: Percentage of inpatients with Osteoporosis
+
+* IP_Perc_RheumatoidArthritis_Chronic: Percentage of inpatients with Rheumatoid Arthritis
+
+* IP_Perc_Stroke_Chronic: Percentage of inpatients with Stroke
+
+* OP_AnnualDeductibleAmt: Amount of outpatient annual deductible
+
+* OP_AnnualReimbursementAmt: Amount of outpatient annual reimbursement
+
+* OP_Count_UniquePatients: Number of unique outpatient beneficiaries
+
+* OP_Count_UniqueState: Number of unique states among outpatients
+
+* OP_Mean_ClaimCost: Average outpatient claim cost
+
+* OP_Mean_ClaimDuration: Average claim duration for outpatients
+
+* OP_Mean_DailyClaimCost: Average daily claim cost for outpatients
+
+* OP_Mean_DeductibleAmtPaid: Average deductible paid for outpatients
+
+* OP_Mean_InscClaimAmtReimbursed: Average amount of reimbursed claims for outpatients
+
+* OP_Mean_NoOfMonths_PartACov: Average number of months covered by Part A Medicare for outpatients
+
+* OP_Mean_NoOfMonths_PartBCov: Average number of months covered by Part B Medicare for outpatients
+
+* OP_Perc_Duplicates: Percentage of outpatient duplicate claims with the same diagnosis and procedure codes
+
+* OP_Perc_GenderZero: Percentage of gender zero outpatients
+
+* OP_Perc_HasAllPhys: Percentage of outpatient claims that had all 3 physicians involved 
+
+* OP_Perc_HasNoPhys: Percentage of outpatient claims that had no physicians involved
+
+* OP_Perc_HasDied: Percentage of claims where the outpatient has a date of death
+
+* OP_Mean_InsReimbursementRatio: Average percentage Insurance covered for outpatients
+
+* OP_Mean_AgeAtClaim: Average age of outpatients
+
+* OP_Mean_NumChronicConds: Average nunber of chronic conditions among outpatients
+
+* OP_Perc_MultHosp: Percentage of outpatients who visited multiple providers
+
+* OP_Perc_No_DiagCode: Percentage of outpatient with no diagnosis codes
+
+* OP_Perc_RaceOne: Percentage of Race One outpatients
+
+* OP_Perc_RaceTwo: Percentage of Race Two outpatients
+
+* OP_Perc_RaceThree: Percentage of Race Three outpatients
+
+* OP_Perc_Alzheimers_Chronic: Percentage of outpatients with Alzheimers
+
+* OP_Perc_Cancer_Chronic: Percentage of outpatients with Cancer
+
+* OP_Perc_Depression_Chronic: Percentage of outpatients with Depression
+
+* OP_Perc_Diabetes_Chronic: Percentage of outpatients with Diabetes
+
+* OP_Perc_HasRenalDisease: Percentage of outpatients with Renal Disease
+
+* OP_Perc_HeartFailure_Chronic: Percentage of outpatients with Heart Failure
+
+* OP_Perc_IschemicHeart_Chronic: Percentage of outpatients with Ischemic Heart
+
+* OP_Perc_KidneyDisease_Chronic: Percentage of outpatients with Kidney Disease
+
+* OP_Perc_ObstrPulmonary_Chronic: Percentage of outpatients with ObstrPulmonary
+
+* OP_Perc_Osteoporosis_Chronic: Percentage of outpatients with Osteoporosis
+
+* OP_Perc_RheumatoidArthritis_Chronic: Percentage of outpatients with Rheumatoid Arthritis
+
+* OP_Perc_Stroke_Chronic: Percentage of outpatients with Stroke
