@@ -4,7 +4,7 @@
 
 * Perc_Outpatient: Percentage of outpatients
 
-* HasTop5AdmtCode: Percentage of inpatient claims with top 5 admtcode (from PotentialFraud)
+* HasTop5AdmitCode: Percentage of inpatient claims with top 5 admtcode (from PotentialFraud)
 
 * PatientsPerAttPhys: Patient/Attending Physician Ratio
 
@@ -173,3 +173,81 @@
 * OP_Perc_RheumatoidArthritis_Chronic: Percentage of outpatients with Rheumatoid Arthritis
 
 * OP_Perc_Stroke_Chronic: Percentage of outpatients with Stroke
+
+--------------------------------------------------------------------------------------------------------------
+NEWLY ADDED VARIABLES
+--------------------------------------------------------------------------------------------------------------
+
+* IP_AgeRange: Range of age for inpatients
+
+* IP_Mean_AdmitDurationPerAttPhys: Average admission duration of inpatients per attending physician
+
+* IP_Mean_AdmitDurationPerPatient: Average admission duration of inpatients per patient
+
+* IP_Mean_ClaimCostPerAttPhys: Average cost of inpatient claims per attending physician 
+
+* IP_Mean_ClaimCostPerOperPhys: Average cost of inpatient claims per operating physician
+
+* IP_Mean_ClaimCostPerOtherPhys: Average cost of inpatient claims per other physician
+
+* IP_Mean_ClaimCostPerPatient: Average cost of inpatient claims per patient
+
+* IP_Mean_Duplicate_per_AttPhy: Average number of inpatient duplicates per attending physician
+
+* IP_Mean_Duplicate_per_Patient: Average number of inpatient duplicates per patient
+
+* IP_Mean_PatientsPerAttPhys: Average number of unique inpatients per attending physician
+
+* IP_Mean_PatientsPerOperPhys: Average number of unique inpatients per operating physician
+
+* IP_Mean_PatientsPerOtherPhys: Average number of unique inpatients per other physician
+
+* IP_Perc_AttPhysIsOperPhys: Percentage of inpatient claims with the same attending and operating physicians
+
+* IP_Perc_Dup_Diff_Provider: Percentage of inpatient duplicates from different providers
+
+* IP_Perc_Dup_Diff_State: Percentage of inpatient duplicates from different states
+
+* IP_Perc_HasAttPhys: Percentage of inpatients that had an attending physician 
+
+* IP_Sum_DeductibleAmtPaid: Sum of deductible amount paid
+
+* IP_Sum_InscClaimAmtReimbursed: Sum of insurance claim amount reimbursed
+
+* Mean_StatePerAttPhys: Average number of unique states per attending physician
+
+* Mean_StatePerOperPhys: Average number of unique states per operating physician
+
+* Mean_StatePerOthPhys: Average number of unique states per other physician
+
+* OP_AgeRange: Range of age for outpatients
+
+* OP_Mean_ClaimCostPerAttPhys: Average cost of outpatient claims per attending physician 
+
+* OP_Mean_ClaimCostPerOperPhys: Average cost of outpatient claims per operating physician
+
+* OP_Mean_ClaimCostPerOtherPhys: Average cost of outpatient claims per other physician
+
+* OP_Mean_ClaimCostPerPatient: Average cost of outpatient claims per patient
+
+* OP_Mean_Duplicate_per_AttPhy: Average number of outpatient duplicates per attending physician
+
+* OP_Mean_Duplicate_per_Patient: Average number of outpatient duplicates per patient
+
+* OP_Mean_PatientsPerAttPhys: Average number of unique outpatients per attending physician
+
+* OP_Mean_PatientsPerOperPhys: Average number of unique outpatients per operating physician
+
+* OP_Mean_PatientsPerOtherPhys: Average number of unique outpatients per other physician
+
+* OP_Perc_AttPhysIsOperPhys: Percentage of outpatient claims with the same attending and operating physicians
+
+* OP_Perc_Dup_Diff_Provider: Percentage of outpatient duplicates from different providers
+
+* OP_Perc_Dup_Diff_State: Percentage of outpatient duplicates from different states
+
+* OP_Perc_HasAttPhys: Percentage of outpatients that had an attending physician 
+
+* OP_Sum_DeductibleAmtPaid: Sum of deductible amount paid
+
+* OP_Sum_InscClaimAmtReimbursed: Sum of insurance claim amount reimbursed
