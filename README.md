@@ -8,8 +8,8 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
-  * [Prerequisites](#prerequisites)
+* [Built With](#built-with)
+* [Prerequisites](#prerequisites)
 * [License](#license)
 * [The team](#team)
 
@@ -23,13 +23,13 @@ The National Health Care Anti-Fraud Association (NHCAA) estimates that the finan
 
 Given the importance of this issue, the team worked on a project to try to predict potentially fraudulent claims from different providers.
 
-### Built With <a name = "built-with"></a>
+## Built With <a name = "built-with"></a>
 - [Numpy](https://numpy.org/) - Numerical Computing Tool
 - [Pandas](https://pandas.pydata.org/) - Data Analysis and Manipulation Tool
 - [Scikit-learn](https://scikit-learn.org/stable/) - Machine Learning library
 - [Seaborn](https://seaborn.pydata.org/) - Data Visualization
 
-### Prerequisites <a name = "prerequisites"></a>
+## Prerequisites <a name = "prerequisites"></a>
 - Python version 3.0 and above
 ```
 $python --version
