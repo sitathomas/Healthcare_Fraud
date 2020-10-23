@@ -37,13 +37,6 @@ Python 3.7.4
 ```
 - Jupyter notebook
 
-
-<!-- LICENSE -->
-## License <a name = "license"></a>
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
 <!-- CONTACT -->
 ## The team <a name = "team"></a>
 [**Lucas Kim**](https://github.com/kiml1)
