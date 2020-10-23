@@ -1,6 +1,6 @@
 <!-- PROJECT -->
 <a>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9_u2kyLCO_7FNxiC3s2pO2q-iwuWxj6LDiA&usqp=CAU">
+  <img src="https://2lffqo2moysixpyb349z0bj6-wpengine.netdna-ssl.com/wp-content/uploads/2017/04/maxresdefault.jpg">
 </a>
 <h3 align="center">Health Care Fraud - A data science project</h3>
 
