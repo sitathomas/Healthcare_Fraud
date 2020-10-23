@@ -50,8 +50,8 @@ fxns.date_parser(claims,
 fxns.drop_chronic_prefix(claims)
 
 # add date cols containing only day, week, year for each column
-# fxns.split_date(claims, ['ClaimStartDt', 'ClaimEndDt',
-#                          'AdmissionDt', 'DischargeDt'])
+fxns.split_date(claims, ['ClaimStartDt', 'ClaimEndDt',
+                         'AdmissionDt', 'DischargeDt'])
 
 # change applicable cols to dtype category
 fxns.to_category_dtype(claims)
