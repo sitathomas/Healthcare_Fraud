@@ -174,6 +174,16 @@ def to_category_dtype(*dfs):
         df[cols] = df[cols].apply(lambda x: x.astype('category'))
 
 
+def feature_importances(model, X):
+    df = pd.DataFrame({'importance': model.feature_importances_,
+                       'feature': np.array(X.columns)}
+                     ).sort_values('importance')
+    print('Top 10:', df.sort_values('importance', ascending=False
+                                   ).feature.head(10).to_list())
+    fig = df.plot(x='feature', kind='barh', figsize=(8,20))
+    return fig
+
+
 
 
 

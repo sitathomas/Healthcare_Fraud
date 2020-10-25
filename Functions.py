@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from sklearn.metrics import confusion_matrix, recall_score
 
 def check_obj_dtypes(*dfs):
     '''
@@ -174,7 +174,31 @@ def to_category_dtype(*dfs):
         df[cols] = df[cols].apply(lambda x: x.astype('category'))
 
 
+def feature_importances(model, X):
+    df = pd.DataFrame({'importance': model.feature_importances_,
+                       'feature': np.array(X.columns)}
+                     ).sort_values('importance')
+    print('Top 10:', df.sort_values('importance', ascending=False
+                                   ).feature.head(10).to_list())
+    fig = df.plot(x='feature', kind='barh', figsize=(8,20))
+    return fig
 
+
+def eval_model(model, best_model, X_train, X_test, y_train, y_test):
+    '''
+    Print the result of the model used.
+    '''
+    print(model,'score')
+    print('-'*30)
+    print('Train: recall score:', round(recall_score(y_train, best_model.predict(X_train)),5))
+    print('Test: recall score:', round(recall_score(y_test, best_model.predict(X_test)),5))
+    print(' ')
+    print("Train Test Confusion Matrix")
+    print('-'*30)
+    print('Train Set')
+    print(confusion_matrix(y_train, best_model.predict(X_train)))
+    print('Test Set')
+    print(confusion_matrix(y_test, best_model.predict(X_test)))
 
 
 
