@@ -1,6 +1,6 @@
 <!-- PROJECT -->
 <a>
-  <img src="https://2lffqo2moysixpyb349z0bj6-wpengine.netdna-ssl.com/wp-content/uploads/2017/04/maxresdefault.jpg">
+  <img style="text-align:center" src="https://www.medgadget.com/wp-content/uploads/2019/11/Healthcare-fraud-detection-market.jpg" alt="healthcare_fraud">
 </a>
 <h3 align="center">Health Care Fraud - A data science project</h3>
 
